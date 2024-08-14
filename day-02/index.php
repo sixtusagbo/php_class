@@ -240,4 +240,31 @@ $total *= 2; // total is now 10
 $total /= 2; // total is now 5
 $total %= 2; // total is now 1
 
-echo $total;
+// echo $total;
+
+# Operator Precedence - BIDMAS/BODMAS/PEMDAS
+// The order in which operations are performed in an arithmetic expression.
+// PEMDAS stands for:
+// P - Parentheses
+// E - Exponents
+// M - Multiplication
+// D - Division
+// A - Addition
+// S - Subtraction
+// BODMAS stands for:
+// B - Brackets
+// O - Orders (i.e. powers and square roots, etc.)
+// D - Division and Multiplication (left-to-right)
+// M - Multiplication and Division (left-to-right)
+// A - Addition and Subtraction (left-to-right)
+// BIDMAS stands for:
+// B - Brackets
+// I - Indices (Powers and Square Roots, etc.)
+// D - Division
+// M - Multiplication
+// A - Addition
+// S - Subtraction
+
+echo 5 + 10 * 2; // 25
+echo (5 + 10) * 2; // 30
+echo 5 + 10 / 2; // 10
