@@ -177,6 +177,7 @@ date_default_timezone_set('Africa/Lagos');
 // Just like mktime(), strtotime() returns the Unix timestamp for a date but it is more flexible.
 // It takes a string that represents a date and time and returns the Unix timestamp for that date and time.
 
+/*
 $now = strtotime('now');
 $today = strtotime('today');
 $tomorrow = strtotime('tomorrow');
@@ -192,6 +193,7 @@ echo date('d/m/Y H:i:s', $yesterday) . "<br>";
 echo date('d/m/Y H:i:s', $nextSunday) . "<br>";
 echo date('d/m/Y H:i:s', $lastSunday) . "<br>";
 echo date('d/m/Y H:i:s', $fooDay) . "<br>";
+*/
 
 // Date Operation functions
 // You can add a date interval to a date or subtract a date interval from a date or even find the difference between two date intervals.
@@ -203,3 +205,42 @@ echo date('d/m/Y H:i:s', $fooDay) . "<br>";
 
 
 // For more date functions, check out: https://www.php.net/manual/en/ref.datetime.php
+
+# Math functions
+// Let's take a look at some important functions from php that can be used to perform mathematical operations.
+
+// 1. abs() - Returns the absolute value of a number
+// echo abs(-4.7); // 4.7
+
+// 2. sqrt() - Returns the square root of a number
+// echo sqrt(64); // 8
+
+// 3. pow() - Returns the value of a number raised to the power of another number
+// echo pow(2, 3); // 8
+
+// 4. min() - Returns the lowest value in a list of arguments
+// echo min([0, 150, 30, 20, -8, -200]); // -200
+
+// 5. max() - Returns the highest value in a list of arguments
+// echo max([0, 150, 30, 20, -8, -200]); // 150
+
+// 6. round() - Rounds a floating-point number
+// echo round(0.60); // 1
+
+// 7. rand() - Generates a random number
+// $foo = rand(); // Random number
+// $bar = rand(10, 100); // Random number between 10 and 100
+// echo $foo . "<br>";
+// echo $bar . "<br>";
+/*
+$randomNumber = rand();
+echo $randomNumber . "<br>";
+echo $randomNumber % 10; // last digit
+echo "<br>";
+echo $randomNumber % 100; // last two digits
+echo "<br>";
+echo $randomNumber % 1000; // last three digits
+*/
+
+// For more math functions, check out: https://www.php.net/manual/en/ref.math.php
+// Here are a few worth mentioning: ceil(), floor(), pi(), deg2rad(), rad2deg()
