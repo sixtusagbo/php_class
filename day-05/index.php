@@ -132,4 +132,14 @@ function add_two_numbers($a, $b)
 // echo add_two_numbers(10, 20); // 30
 $sum = add_two_numbers(10, 5);
 
-echo $sum;
+// echo $sum;
+
+/**
+ * Function that adds two numbers
+ */
+function adds_numbers(int $a, int $b, int $c = 0)
+{
+  return $a + $b + $c;
+}
+
+echo adds_numbers(10, 20, 40); // 30
