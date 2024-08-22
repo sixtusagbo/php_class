@@ -137,3 +137,69 @@ echo "</pre>";
 */
 
 // For more array functions, check out: https://www.php.net/manual/en/ref.array.php
+
+# Date functions
+// Let's take a look at some important functions from php that can be used to manipulate dates.
+
+// 1. date() - Returns the current date
+// echo date('Y'); // Year
+// echo date('m'); // Month
+// echo date('d'); // Month
+// echo date('H'); // Hour
+// echo date('i'); // Minute
+// echo date('s'); // Second
+// echo date('l'); // Day of the week
+
+// Set timezone
+date_default_timezone_set('Africa/Lagos');
+
+// echo date('d|m|Y');
+// echo date('H:i:s');
+// echo date('d/m/Y H:i:s');
+// $today = date("F j, Y, g:i a");                 // March 10, 2001, 5:16 pm
+// $today = date("m.d.y");                         // 03.10.01
+// $today = date("j, n, Y");                       // 10, 3, 2001
+// $today = date("Ymd");                           // 20010310
+// $today = date('h-i-s, j-m-y, it is w Day');     // 05-16-18, 10-03-01, 1631 1618 6 Satpm01
+// $today = date('\i\t \i\s \t\h\e jS \d\a\y.');   // it is the 10th day.
+// $today = date("D M j G:i:s T Y");               // Sat Mar 10 17:16:18 MST 2001
+// $today = date('H:m:s \m \i\s\ \m\o\n\t\h');     // 17:03:18 m is month
+// $today = date("H:i:s");                         // 17:16:18
+// $today = date("Y-m-d H:i:s");                   // 2001-03-10 17:16:18 (the MySQL DATETIME format)
+
+// 2. mktime() - Returns the Unix timestamp for a date
+// A unix timestamp is a long integer containing the number of seconds between the Unix Epoch (January 1 1970 00:00:00 GMT) and the time specified.
+// $todayStamp = mktime(14, 28, 40, 8, 22, 2024);
+// echo $todayStamp;
+// echo date('d/m/Y H:i:s', $todayStamp);
+
+// 3. strtotime() - Returns the Unix timestamp for a date
+// Just like mktime(), strtotime() returns the Unix timestamp for a date but it is more flexible.
+// It takes a string that represents a date and time and returns the Unix timestamp for that date and time.
+
+$now = strtotime('now');
+$today = strtotime('today');
+$tomorrow = strtotime('tomorrow');
+$yesterday = strtotime('yesterday');
+$nextSunday = strtotime('next Sunday');
+$lastSunday = strtotime('last Sunday');
+$fooDay = strtotime('4th July 2024');
+
+echo date('d/m/Y H:i:s', $now) . "<br>";
+echo date('d/m/Y H:i:s', $today) . "<br>";
+echo date('d/m/Y H:i:s', $tomorrow) . "<br>";
+echo date('d/m/Y H:i:s', $yesterday) . "<br>";
+echo date('d/m/Y H:i:s', $nextSunday) . "<br>";
+echo date('d/m/Y H:i:s', $lastSunday) . "<br>";
+echo date('d/m/Y H:i:s', $fooDay) . "<br>";
+
+// Date Operation functions
+// You can add a date interval to a date or subtract a date interval from a date or even find the difference between two date intervals.
+
+// ?Study the following date functions and try to understand how they work. You can ask me if you have any questions.
+// i. date_diff() - Returns the difference between two dates
+// ii. date_add() - Adds a date interval to a date
+// iii. date_sub() - Subtracts a date interval from a date
+
+
+// For more date functions, check out: https://www.php.net/manual/en/ref.datetime.php
