@@ -244,3 +244,74 @@ echo $randomNumber % 1000; // last three digits
 
 // For more math functions, check out: https://www.php.net/manual/en/ref.math.php
 // Here are a few worth mentioning: ceil(), floor(), pi(), deg2rad(), rad2deg()
+
+# File functions
+// Let's take a look at some important functions from php that can be used to manipulate files.
+
+// 1. file_exists() - Checks whether a file or directory exists
+// echo file_exists('day-06/index.php'); // 0
+// echo file_exists('../day-06/index.php'); // 1
+// echo file_exists('test.txt');
+
+// 2. is_file() - Checks whether a filename is a regular file
+// echo is_file('test.txt'); // 1
+// echo is_file('test_directory'); // 0
+
+// 3. is_dir() - Checks whether a filename is a directory
+// echo is_dir('test.txt'); // 0
+// echo is_dir('test_directory'); // 1
+
+// 4. file_get_contents() - Reads the entire contents of a file into a string.
+// It is the preferred way to read the contents of a file into a string.
+// $testFile = file_get_contents('test.txt');
+// echo $testFile;
+
+// 5. file_put_contents() - Writes a string to a file
+// It is the preferred way to write a string to a file.
+// It returns the number of bytes written.
+// If it fails, it returns false.
+// If the file does not exist, it will be created.
+// echo file_put_contents('test.txt', 'Hello World!');
+// echo file_put_contents('test_two.txt', 'Hello World!');
+
+// 6. unlink() - Deletes a file
+// It returns true on success and false on failure.
+// echo unlink('test_two.txt');
+
+// 7. copy() - Copies a file
+// It returns true on success and false on failure.
+// echo copy('test.txt', 'test_copy.txt');
+
+// 8. rename() - Renames a file or directory
+// It returns true on success and false on failure.
+// echo rename('test_copy.txt', 'test.txt');
+
+// 9. file() - Reads an entire file into an array
+// It reads the file line by line and stores each line as an element in the array.
+/*
+$testFile = file('test.txt');
+
+echo "<pre>";
+print_r($testFile);
+echo "</pre>";
+
+echo $testFile[1];
+*/
+
+// 10. mkdir() - Creates a directory
+// It returns true on success and false on failure.
+// echo mkdir('test_directory');
+// echo mkdir('test_directory-two');
+
+/// Creates a file
+/// Returns true on success and false on failure.
+function file_create($filename, $content)
+{
+  if (file_put_contents($filename, $content)) return true;
+
+  return false;
+}
+
+echo file_create('foo.txt', 'foo bar baz'); 
+
+// For more file functions, check out: https://www.php.net/manual/en/ref.filesystem.php
