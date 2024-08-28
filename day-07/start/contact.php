@@ -2,4 +2,4 @@
 
 <h1 class="text-4xl text-center">Contact us</h1>
 
-<?php include 'inc/footer.php'; ?>
+<?php include('inc/footer.php'); ?>
