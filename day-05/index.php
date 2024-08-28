@@ -142,4 +142,4 @@ function adds_numbers(int $a, int $b, int $c = 0)
   return $a + $b + $c;
 }
 
-echo adds_numbers(10, 20, 40); // 30
+echo adds_numbers(10, 20, 40);
