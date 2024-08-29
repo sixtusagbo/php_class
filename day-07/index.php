@@ -7,5 +7,5 @@
  * - require
  * - require_once
  * - Superglobals
- *    -$_SERVER
+ *    - $_SERVER
  */
