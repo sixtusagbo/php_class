@@ -63,7 +63,7 @@ if (isset($_REQUEST['name'])) {
 
   <!-- main content -->
   <div class="container mx-auto max-w-xl">
-    <form method="POST" action="index.php" class="flex flex-col gap-4">
+    <form method="POST" action="<?= $_SERVER['PHP_SELF'] ?>" class="flex flex-col gap-4">
       <label for="name">Name</label>
       <input type="text" name="name" id="name" class="p-2 border border-gray-300 rounded-md">
 
