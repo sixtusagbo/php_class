@@ -46,60 +46,37 @@ mysqli_close($conn);
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<?php include('inc/header.php') ?>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PHPBlog</title>
+<main class="container mx-auto max-w-xl mb-32 mt-10">
+  <h1 class="font-bold text-purple-500 text-xl mb-6">Edit Blog Post</h1>
 
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.2/dist/tailwind.min.css" rel="stylesheet">
-</head>
-
-<body>
-  <nav class="bg-purple-500 p-6">
-    <div class="container mx-auto max-w-xl flex justify-between items-center">
-      <a href="<?= APP_URL ?>" class="text-white text-2xl font-bold">PHPBlog</a>
-      <ul class="flex">
-        <li><a href="<?= APP_URL ?>" class="text-white hover:text-gray-200 px-4">Home</a></li>
-        <li><a href="<?= APP_URL ?>create.php" class="text-white
-          hover:text-gray-200 px-4">Create Post</a></li>
-      </ul>
+  <!-- Message -->
+  <?php if (!empty($message)): ?>
+    <?php
+    $messageClass = $messageType === 'error' ? 'bg-red-200 text-red-800' : 'bg-green-200 text-green-800';
+    ?>
+    <div class="<?= $messageClass ?> py-4 px-4 rounded-lg mb-4">
+      <?= $message ?>
     </div>
-  </nav>
+  <?php endif; ?>
 
-  <main class="container mx-auto max-w-xl mb-32 mt-10">
-    <h1 class="font-bold text-purple-500 text-xl mb-6">Edit Blog Post</h1>
+  <form method="POST" action="<?= $_SERVER['PHP_SELF'] ?>" class="flex flex-col gap-4">
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title" value="<?= $post['title'] ?>" class="p-2 border border-purple-300 rounded-md">
 
-    <!-- Message -->
-    <?php if (!empty($message)): ?>
-      <?php
-      $messageClass = $messageType === 'error' ? 'bg-red-200 text-red-800' : 'bg-green-200 text-green-800';
-      ?>
-      <div class="<?= $messageClass ?> py-4 px-4 rounded-lg mb-4">
-        <?= $message ?>
-      </div>
-    <?php endif; ?>
+    <label for="author">Author</label>
+    <input type="text" name="author" id="author" value="<?= $post['author'] ?>" class="p-2 border border-purple-300 rounded-md">
 
-    <form method="POST" action="<?= $_SERVER['PHP_SELF'] ?>" class="flex flex-col gap-4">
-      <label for="title">Title</label>
-      <input type="text" name="title" id="title" value="<?= $post['title'] ?>" class="p-2 border border-purple-300 rounded-md">
-
-      <label for="author">Author</label>
-      <input type="text" name="author" id="author" value="<?= $post['author'] ?>" class="p-2 border border-purple-300 rounded-md">
-
-      <label for="body">Body</label>
-      <textarea name="body" id="body" class="p-2 border border-purple-300 rounded-md">
+    <label for="body">Body</label>
+    <textarea name="body" id="body" class="p-2 border border-purple-300 rounded-md">
         <?= $post['body'] ?>
       </textarea>
 
-      <input type="hidden" name="id" value="<?= $post['id'] ?>">
+    <input type="hidden" name="id" value="<?= $post['id'] ?>">
 
-      <button type="submit" name="submit" class="bg-purple-500 hover:bg-purple-800 text-white p-2 rounded-md">Submit</button>
-    </form>
-  </main>
+    <button type="submit" name="submit" class="bg-purple-500 hover:bg-purple-800 text-white p-2 rounded-md">Submit</button>
+  </form>
+</main>
 
-</body>
-
-</html>
+<?php include('inc/footer.php') ?>
