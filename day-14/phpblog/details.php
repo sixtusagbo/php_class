@@ -1,6 +1,19 @@
 <?php
 require('config/db.php');
 
+if (isset($_POST['deleteForm'])) {
+  $id = mysqli_real_escape_string($conn, $_POST['id']);
+
+  // Create the query
+  $query = "DELETE FROM posts WHERE id = $id";
+
+  if (mysqli_query($conn, $query)) {
+    header('Location: ' . APP_URL);
+  } else {
+    echo 'Error: ' . mysqli_error($conn);
+  }
+}
+
 // Fetch data from database
 $id = mysqli_real_escape_string($conn, $_GET['id']);
 // Create the query
@@ -57,11 +70,16 @@ mysqli_close($conn);
           <?= $post['title'] ?>
         </h1>
 
-        <div>
-          <!-- Edit button -->
+        <div class="flex gap-4">
           <a href="<?= APP_URL ?>edit.php?id=<?= $post['id'] ?>" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
             Edit
           </a>
+          <form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
+            <input type="hidden" name="id" value="<?= $post['id'] ?>">
+            <button type="submit" name="deleteForm" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+              Delete
+            </button>
+          </form>
         </div>
       </div>
 
