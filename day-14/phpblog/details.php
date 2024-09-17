@@ -1,5 +1,6 @@
 <?php
 require('config/db.php');
+require_once('config/globals.php');
 
 if (isset($_POST['deleteForm'])) {
   $id = mysqli_real_escape_string($conn, $_POST['id']);
@@ -9,6 +10,7 @@ if (isset($_POST['deleteForm'])) {
 
   if (mysqli_query($conn, $query)) {
     header('Location: ' . APP_URL);
+    $_SESSION['message'] = 'Post deleted successfully';
   } else {
     echo 'Error: ' . mysqli_error($conn);
   }

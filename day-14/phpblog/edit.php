@@ -1,5 +1,6 @@
 <?php
 require('config/db.php');
+require_once('config/globals.php');
 
 $message = "";
 $messageType = "error";
@@ -21,6 +22,7 @@ if (isset($_POST['submit'])) {
 
     if (mysqli_query($conn, $query)) {
       header('Location: ' . APP_URL);
+      $_SESSION['message'] = 'Post updated successfully';
     } else {
       $message = "Error: " . mysqli_error($conn);
     }
