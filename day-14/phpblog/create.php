@@ -1,0 +1,84 @@
+<?php
+require('config/db.php');
+
+$message = "";
+$messageType = "error";
+
+if (isset($_POST['submit'])) {
+  $title = mysqli_real_escape_string($conn, $_POST['title']);
+  $author = mysqli_real_escape_string($conn, $_POST['author']);
+  $body = mysqli_real_escape_string($conn, $_POST['body']);
+
+  // Validate the form
+  if (empty($title) || empty($author) || empty($body)) {
+    $message = "Please fill in all fields";
+  } else {
+    // Create the query
+    $query = "INSERT INTO posts 
+              (title, author, body) 
+              VALUES ('$title', '$author', '$body')";
+
+    if (mysqli_query($conn, $query)) {
+      header('Location: ' . APP_URL);
+    } else {
+      $message = "Error: " . mysqli_error($conn);
+    }
+  }
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHPBlog</title>
+
+  <!-- Add tailwind css -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="bg-purple-500 p-6">
+    <div class="container mx-auto max-w-xl flex justify-between items-center">
+      <a href="<?= APP_URL ?>" class="text-white text-2xl font-bold">PHPBlog</a>
+      <ul class="flex">
+        <li><a href="<?= APP_URL ?>" class="text-white hover:text-gray-200 px-4">Home</a></li>
+        <li><a href="<?= APP_URL ?>create.php" class="text-white
+          hover:text-gray-200 px-4">Create Post</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container mx-auto max-w-xl mb-32 mt-10">
+    <h1 class="font-bold text-purple-500 text-xl mb-6">New Blog Post</h1>
+
+    <!-- Message -->
+    <?php if (!empty($message)): ?>
+      <?php
+      $messageClass = $messageType === 'error' ? 'bg-red-200 text-red-800' : 'bg-green-200 text-green-800';
+      ?>
+      <div class="<?= $messageClass ?> py-4 px-4 rounded-lg mb-4">
+        <?= $message ?>
+      </div>
+    <?php endif; ?>
+
+    <form method="POST" action="<?= $_SERVER['PHP_SELF'] ?>" class="flex flex-col gap-4">
+      <label for="title">Title</label>
+      <input type="text" name="title" id="title" class="p-2 border border-purple-300 rounded-md">
+
+      <label for="author">Author</label>
+      <input type="text" name="author" id="author" class="p-2 border border-purple-300 rounded-md">
+
+      <label for="body">Body</label>
+      <textarea name="body" id="body" class="p-2 border border-purple-300 rounded-md"></textarea>
+
+      <button type="submit" name="submit" class="bg-purple-500 hover:bg-purple-800 text-white p-2 rounded-md">Submit</button>
+    </form>
+  </main>
+
+</body>
+
+</html>

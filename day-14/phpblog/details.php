@@ -2,7 +2,7 @@
 require('config/db.php');
 
 // Fetch data from database
-$id = $_GET['id'];
+$id = mysqli_real_escape_string($conn, $_GET['id']);
 // Create the query
 $query = "SELECT * FROM posts WHERE id = $id";
 
@@ -38,9 +38,18 @@ mysqli_close($conn);
 
 <body>
 
-  <main class="container mx-auto max-w-xl mb-32 mt-10">
-    <a href="<?= APP_URL ?>" class="text-blue-500 block mb-4 text-lg">Back</a>
+  <nav class="bg-purple-500 p-6">
+    <div class="container mx-auto max-w-xl flex justify-between items-center">
+      <a href="<?= APP_URL ?>" class="text-white text-2xl font-bold">PHPBlog</a>
+      <ul class="flex">
+        <li><a href="<?= APP_URL ?>" class="text-white hover:text-gray-200 px-4">Home</a></li>
+        <li><a href="<?= APP_URL ?>create.php" class="text-white
+          hover:text-gray-200 px-4">Create Post</a></li>
+      </ul>
+    </div>
+  </nav>
 
+  <main class="container mx-auto max-w-xl mb-32 mt-10">
     <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl p-8">
       <h1 class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
         <?= $post['title'] ?>

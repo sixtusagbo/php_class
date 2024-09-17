@@ -3,7 +3,7 @@ require('config/db.php');
 
 // Fetch data from database
 // Create the query
-$query = 'SELECT * FROM posts';
+$query = 'SELECT * FROM posts ORDER BY created_at DESC';
 
 $result = mysqli_query($conn, $query);
 
@@ -36,6 +36,16 @@ mysqli_close($conn);
 </head>
 
 <body>
+  <nav class="bg-purple-500 p-6">
+    <div class="container mx-auto max-w-xl flex justify-between items-center">
+      <a href="<?= APP_URL ?>" class="text-white text-2xl font-bold">PHPBlog</a>
+      <ul class="flex">
+        <li><a href="<?= APP_URL ?>" class="text-white hover:text-gray-200 px-4">Home</a></li>
+        <li><a href="<?= APP_URL ?>create.php" class="text-white
+          hover:text-gray-200 px-4">Create Post</a></li>
+      </ul>
+    </div>
+  </nav>
 
   <main class="container mx-auto max-w-xl mb-32 mt-10">
     <h1 class="font-bold text-purple-500 text-xl mb-10">Welcome to our <strong>PHPBlog</strong></h1>
