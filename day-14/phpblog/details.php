@@ -51,9 +51,19 @@ mysqli_close($conn);
 
   <main class="container mx-auto max-w-xl mb-32 mt-10">
     <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl p-8">
-      <h1 class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
-        <?= $post['title'] ?>
-      </h1>
+      <div class="flex justify-between items-center">
+
+        <h1 class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+          <?= $post['title'] ?>
+        </h1>
+
+        <div>
+          <!-- Edit button -->
+          <a href="<?= APP_URL ?>edit.php?id=<?= $post['id'] ?>" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
+            Edit
+          </a>
+        </div>
+      </div>
 
       <p class="mt-2 text-slate-500">
         <?= $post['body'] ?>
