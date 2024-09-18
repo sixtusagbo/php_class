@@ -1,0 +1,1294 @@
+mysql> CREATE DATABASE listacc;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SHOW DATABASES;
++-------------------------+
+| Database                |
++-------------------------+
+| hr                      |
+| information_schema      |
+| laragigs                |
+| listacc                 |
+| mimitest                |
+| mirablog                |
+| mysql                   |
+| performance_schema      |
+| phpblog                 |
+| school                  |
+| sys                     |
+| test                    |
+| world                   |
+| zin_express             |
++-------------------------+
+14 rows in set (0.00 sec)
+
+mysql> DROP DATABASE listacc;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> SHOW DATABASES;
++-------------------------+
+| Database                |
++-------------------------+
+| hr                      |
+| information_schema      |
+| laragigs                |
+| mimitest                |
+| mirablog                |
+| mysql                   |
+| performance_schema      |
+| phpblog                 |
+| school                  |
+| sys                     |
+| test                    |
+| world                   |
+| zin_express             |
++-------------------------+
+13 rows in set (0.00 sec)
+
+mysql> CREATE DATABASE listacc;
+Query OK, 1 row affected (0.15 sec)
+
+mysql> SHOW DATABASES;
++-------------------------+
+| Database                |
++-------------------------+
+| hr                      |
+| information_schema      |
+| laragigs                |
+| listacc                 |
+| mimitest                |
+| mirablog                |
+| mysql                   |
+| performance_schema      |
+| phpblog                 |
+| school                  |
+| sys                     |
+| test                    |
+| world                   |
+| zin_express             |
++-------------------------+
+14 rows in set (0.00 sec)
+
+mysql> USE listacc;
+Database changed
+mysql> SHOW TABLES;
+Empty set (0.00 sec)
+
+mysql> CREATE TABLE users (
+    -> id INT PRIMARY_KEY AUTO_INCREMENT,
+    -> ^C
+mysql> CREATE TABLE users(
+    -> id INT NOT NULL PRIMARY_KEY AUTO_INCREMENT,
+    -> name VARCHAR(150) NULL,
+    -> age INT NULL,
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PRIMARY_KEY AUTO_INCREMENT,
+name VARCHAR(150) NULL,
+age INT NULL,
+)' at line 2
+mysql> CREATE TABLE users(
+    -> id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    -> name VARCHAR(150) NULL,
+    -> age INT NULL);
+Query OK, 0 rows affected (3.00 sec)
+
+mysql> SHOW TABLES;
++-------------------+
+| Tables_in_listacc |
++-------------------+
+| users             |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> INSERT INTO users (id, name, age) VALUES (NULL, 'Sixtus', 20);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO users
+    -> (id, name, age) VALUES
+    -> (NULL, 'Chekwube', 30)
+    -> (NULL, 'Sir Vin', 50)
+    -> ^C
+mysql> INSERT INTO users
+    -> (id, name, age) VALUES
+    -> (NULL, 'Chekwube', 30)
+    -> (NULL, 'Sir Vin', 50)
+    -> ^C
+mysql> INSERT INTO users
+    -> (id, name, age) VALUES
+    -> (NULL, 'Chekwube', 30),
+    -> (NULL, 'Chukwuka', 40),
+    -> (NULL, 'Bani', 45);
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> SELECT (name, age)
+    -> FROM users;
+ERROR 1241 (21000): Operand should contain 1 column(s)
+mysql> SELECT name, age FROM users;
++----------+------+
+| name     | age  |
++----------+------+
+| Sixtus   |   20 |
+| Chekwube |   30 |
+| Chukwuka |   40 |
+| Bani     |   45 |
++----------+------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT name, age FROM users\G;
+*************************** 1. row ***************************
+name: Sixtus
+ age: 20
+*************************** 2. row ***************************
+name: Chekwube
+ age: 30
+*************************** 3. row ***************************
+name: Chukwuka
+ age: 40
+*************************** 4. row ***************************
+name: Bani
+ age: 45
+4 rows in set (0.00 sec)
+
+ERROR: 
+No query specified
+
+mysql> SELECT name, age FROM users\g;
++----------+------+
+| name     | age  |
++----------+------+
+| Sixtus   |   20 |
+| Chekwube |   30 |
+| Chukwuka |   40 |
+| Bani     |   45 |
++----------+------+
+4 rows in set (0.00 sec)
+
+ERROR: 
+No query specified
+
+mysql> SELECT name FROM users;
++----------+
+| name     |
++----------+
+| Sixtus   |
+| Chekwube |
+| Chukwuka |
+| Bani     |
++----------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT id, name, age FROM users;
++----+----------+------+
+| id | name     | age  |
++----+----------+------+
+|  1 | Sixtus   |   20 |
+|  2 | Chekwube |   30 |
+|  3 | Chukwuka |   40 |
+|  4 | Bani     |   45 |
++----+----------+------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT * FROM users;
++----+----------+------+
+| id | name     | age  |
++----+----------+------+
+|  1 | Sixtus   |   20 |
+|  2 | Chekwube |   30 |
+|  3 | Chukwuka |   40 |
+|  4 | Bani     |   45 |
++----+----------+------+
+4 rows in set (0.00 sec)
+
+mysql> UPDATE users SET age = 21 WHERE id = 1;
+Query OK, 1 row affected (0.12 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM users;
++----+----------+------+
+| id | name     | age  |
++----+----------+------+
+|  1 | Sixtus   |   21 |
+|  2 | Chekwube |   30 |
+|  3 | Chukwuka |   40 |
+|  4 | Bani     |   45 |
++----+----------+------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT * FROM users LIMIT 2;
++----+----------+------+
+| id | name     | age  |
++----+----------+------+
+|  1 | Sixtus   |   21 |
+|  2 | Chekwube |   30 |
++----+----------+------+
+2 rows in set (0.00 sec)
+
+mysql> DELETE FROM users WHERE name = 'Bani';
+Query OK, 1 row affected (0.08 sec)
+
+mysql> SELECT * FROM users;
++----+----------+------+
+| id | name     | age  |
++----+----------+------+
+|  1 | Sixtus   |   21 |
+|  2 | Chekwube |   30 |
+|  3 | Chukwuka |   40 |
++----+----------+------+
+3 rows in set (0.00 sec)
+
+mysql> TRUNCATE TABLE users;
+Query OK, 0 rows affected (0.75 sec)
+
+mysql> SELECT * FROM users;
+Empty set (0.00 sec)
+
+mysql> CREATE TABLE users(
+    -> id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    -> name VARCHAR(150) NULL,
+    -> age INT NULL);
+ERROR 1050 (42S01): Table 'users' already exists
+mysql> SHOW TABLES;
++-------------------+
+| Tables_in_listacc |
++-------------------+
+| users             |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> INSERT INTO users
+    -> (id, name, age) VALUES
+    -> (NULL, 'Sir Vin', 50),
+    -> (NULL, 'Chukwuka', 40),
+    -> (NULL, 'Chekwube', 30)
+    -> ,(NULL, 'Bani', 45);
+Query OK, 4 rows affected (0.05 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM users;
++----+----------+------+
+| id | name     | age  |
++----+----------+------+
+|  1 | Sir Vin  |   50 |
+|  2 | Chukwuka |   40 |
+|  3 | Chekwube |   30 |
+|  4 | Bani     |   45 |
++----+----------+------+
+4 rows in set (0.00 sec)
+
+mysql> INSERT INTO users (name, age) VALUES ('Mimi', 20);
+Query OK, 1 row affected (0.15 sec)
+
+mysql> SELECT * FROM users;
++----+----------+------+
+| id | name     | age  |
++----+----------+------+
+|  1 | Sir Vin  |   50 |
+|  2 | Chukwuka |   40 |
+|  3 | Chekwube |   30 |
+|  4 | Bani     |   45 |
+|  5 | Mimi     |   20 |
++----+----------+------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM users WHERE age > 30;
++----+----------+------+
+| id | name     | age  |
++----+----------+------+
+|  1 | Sir Vin  |   50 |
+|  2 | Chukwuka |   40 |
+|  4 | Bani     |   45 |
++----+----------+------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM users WHERE age < 20;
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM users WHERE age < 40;
++----+----------+------+
+| id | name     | age  |
++----+----------+------+
+|  3 | Chekwube |   30 |
+|  5 | Mimi     |   20 |
++----+----------+------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM users WHERE age >= 40 AND age < 50;
++----+----------+------+
+| id | name     | age  |
++----+----------+------+
+|  2 | Chukwuka |   40 |
+|  4 | Bani     |   45 |
++----+----------+------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM users WHERE age > 40 OR age = 20;
++----+---------+------+
+| id | name    | age  |
++----+---------+------+
+|  1 | Sir Vin |   50 |
+|  4 | Bani    |   45 |
+|  5 | Mimi    |   20 |
++----+---------+------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM users WHERE NOT age = 20;
++----+----------+------+
+| id | name     | age  |
++----+----------+------+
+|  1 | Sir Vin  |   50 |
+|  2 | Chukwuka |   40 |
+|  3 | Chekwube |   30 |
+|  4 | Bani     |   45 |
++----+----------+------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT * FROM users WHERE NOT name = 'Bani';
++----+----------+------+
+| id | name     | age  |
++----+----------+------+
+|  1 | Sir Vin  |   50 |
+|  2 | Chukwuka |   40 |
+|  3 | Chekwube |   30 |
+|  5 | Mimi     |   20 |
++----+----------+------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT * FROM users;
++----+----------+------+
+| id | name     | age  |
++----+----------+------+
+|  1 | Sir Vin  |   50 |
+|  2 | Chukwuka |   40 |
+|  3 | Chekwube |   30 |
+|  4 | Bani     |   45 |
+|  5 | Mimi     |   20 |
++----+----------+------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM users ORDER BY age;
++----+----------+------+
+| id | name     | age  |
++----+----------+------+
+|  5 | Mimi     |   20 |
+|  3 | Chekwube |   30 |
+|  2 | Chukwuka |   40 |
+|  4 | Bani     |   45 |
+|  1 | Sir Vin  |   50 |
++----+----------+------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM users ORDER BY age DESC;
++----+----------+------+
+| id | name     | age  |
++----+----------+------+
+|  1 | Sir Vin  |   50 |
+|  4 | Bani     |   45 |
+|  2 | Chukwuka |   40 |
+|  3 | Chekwube |   30 |
+|  5 | Mimi     |   20 |
++----+----------+------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM users ORDER BY age ASC;
++----+----------+------+
+| id | name     | age  |
++----+----------+------+
+|  5 | Mimi     |   20 |
+|  3 | Chekwube |   30 |
+|  2 | Chukwuka |   40 |
+|  4 | Bani     |   45 |
+|  1 | Sir Vin  |   50 |
++----+----------+------+
+5 rows in set (0.00 sec)
+
+mysql> INSERT INTO users (age) VALUES (39, 25);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO users (age) VALUES (39), (25);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM users;
++----+----------+------+
+| id | name     | age  |
++----+----------+------+
+|  1 | Sir Vin  |   50 |
+|  2 | Chukwuka |   40 |
+|  3 | Chekwube |   30 |
+|  4 | Bani     |   45 |
+|  5 | Mimi     |   20 |
+|  6 | NULL     |   39 |
+|  7 | NULL     |   25 |
++----+----------+------+
+7 rows in set (0.00 sec)
+
+mysql> INSERT INTO users (name, age) VALUES ('Foo', 19), ('', 22);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM users;
++----+----------+------+
+| id | name     | age  |
++----+----------+------+
+|  1 | Sir Vin  |   50 |
+|  2 | Chukwuka |   40 |
+|  3 | Chekwube |   30 |
+|  4 | Bani     |   45 |
+|  5 | Mimi     |   20 |
+|  6 | NULL     |   39 |
+|  7 | NULL     |   25 |
+|  8 | Foo      |   19 |
+|  9 |          |   22 |
++----+----------+------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT * FROM users WHERE name NOT NULL;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NULL' at line 1
+mysql> SELECT * FROM users WHERE NOT name = NULL;
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM users WHERE NOT name=NULL;
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM users WHERE name=NULL;
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM users WHERE NOT name='NULL';
++----+----------+------+
+| id | name     | age  |
++----+----------+------+
+|  1 | Sir Vin  |   50 |
+|  2 | Chukwuka |   40 |
+|  3 | Chekwube |   30 |
+|  4 | Bani     |   45 |
+|  5 | Mimi     |   20 |
+|  8 | Foo      |   19 |
+|  9 |          |   22 |
++----+----------+------+
+7 rows in set (0.00 sec)
+
+mysql> ^C
+mysql> SELECT * FROM users WHERE name='NULL';
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM users WHERE name=NULL;
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM users WHERE name='NULL';
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM users WHERE name IS NULL;
++----+------+------+
+| id | name | age  |
++----+------+------+
+|  6 | NULL |   39 |
+|  7 | NULL |   25 |
++----+------+------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM users WHERE name IS NOT NULL;
++----+----------+------+
+| id | name     | age  |
++----+----------+------+
+|  1 | Sir Vin  |   50 |
+|  2 | Chukwuka |   40 |
+|  3 | Chekwube |   30 |
+|  4 | Bani     |   45 |
+|  5 | Mimi     |   20 |
+|  8 | Foo      |   19 |
+|  9 |          |   22 |
++----+----------+------+
+7 rows in set (0.00 sec)
+
+mysql> ^C
+mysql> ALTER TABLE users ADD state VARCHAR(50);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM users;
++----+----------+------+-------+
+| id | name     | age  | state |
++----+----------+------+-------+
+|  1 | Sir Vin  |   50 | NULL  |
+|  2 | Chukwuka |   40 | NULL  |
+|  3 | Chekwube |   30 | NULL  |
+|  4 | Bani     |   45 | NULL  |
+|  5 | Mimi     |   20 | NULL  |
+|  6 | NULL     |   39 | NULL  |
+|  7 | NULL     |   25 | NULL  |
+|  8 | Foo      |   19 | NULL  |
+|  9 |          |   22 | NULL  |
++----+----------+------+-------+
+9 rows in set (0.00 sec)
+
+mysql> UPDATE users SET state = 'Ebonyi';
+Query OK, 9 rows affected (0.01 sec)
+Rows matched: 9  Changed: 9  Warnings: 0
+
+mysql> SELECT * FROM users;
++----+----------+------+--------+
+| id | name     | age  | state  |
++----+----------+------+--------+
+|  1 | Sir Vin  |   50 | Ebonyi |
+|  2 | Chukwuka |   40 | Ebonyi |
+|  3 | Chekwube |   30 | Ebonyi |
+|  4 | Bani     |   45 | Ebonyi |
+|  5 | Mimi     |   20 | Ebonyi |
+|  6 | NULL     |   39 | Ebonyi |
+|  7 | NULL     |   25 | Ebonyi |
+|  8 | Foo      |   19 | Ebonyi |
+|  9 |          |   22 | Ebonyi |
++----+----------+------+--------+
+9 rows in set (0.00 sec)
+
+mysql> ^C
+mysql> ^C
+mysql> UPDATE users SET state = 'Enugu' WHERE id IN (3, 1);
+Query OK, 2 rows affected (0.01 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> SELECT * FROM users;
++----+----------+------+--------+
+| id | name     | age  | state  |
++----+----------+------+--------+
+|  1 | Sir Vin  |   50 | Enugu  |
+|  2 | Chukwuka |   40 | Ebonyi |
+|  3 | Chekwube |   30 | Enugu  |
+|  4 | Bani     |   45 | Ebonyi |
+|  5 | Mimi     |   20 | Ebonyi |
+|  6 | NULL     |   39 | Ebonyi |
+|  7 | NULL     |   25 | Ebonyi |
+|  8 | Foo      |   19 | Ebonyi |
+|  9 |          |   22 | Ebonyi |
++----+----------+------+--------+
+9 rows in set (0.00 sec)
+
+mysql> UPDATE users SET state = 'Anambra' WHERE id IN (6,7,8);
+Query OK, 3 rows affected (0.01 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+mysql> SELECT * FROM users;
++----+----------+------+---------+
+| id | name     | age  | state   |
++----+----------+------+---------+
+|  1 | Sir Vin  |   50 | Enugu   |
+|  2 | Chukwuka |   40 | Ebonyi  |
+|  3 | Chekwube |   30 | Enugu   |
+|  4 | Bani     |   45 | Ebonyi  |
+|  5 | Mimi     |   20 | Ebonyi  |
+|  6 | NULL     |   39 | Anambra |
+|  7 | NULL     |   25 | Anambra |
+|  8 | Foo      |   19 | Anambra |
+|  9 |          |   22 | Ebonyi  |
++----+----------+------+---------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT * FROM users GROUP BY state;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'listacc.users.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> SELECT COUNT(*) FROM users GROUP BY state;
++----------+
+| COUNT(*) |
++----------+
+|        2 |
+|        4 |
+|        3 |
++----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(*), state FROM users GROUP BY state;
++----------+---------+
+| COUNT(*) | state   |
++----------+---------+
+|        2 | Enugu   |
+|        4 | Ebonyi  |
+|        3 | Anambra |
++----------+---------+
+3 rows in set (0.00 sec)
+
+mysql> USE world;
+Database changed
+mysql> SHOW TABLES;
++-----------------+
+| Tables_in_world |
++-----------------+
+| city            |
+| country         |
+| countrylanguage |
++-----------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM country LIMIT 50;
++------+---------------------------------------+---------------+---------------------------+-------------+-----------+------------+----------------+-----------+-----------+------------------------------------+----------------------------------------------+------------------------------+---------+-------+
+| Code | Name                                  | Continent     | Region                    | SurfaceArea | IndepYear | Population | LifeExpectancy | GNP       | GNPOld    | LocalName                          | GovernmentForm                               | HeadOfState                  | Capital | Code2 |
++------+---------------------------------------+---------------+---------------------------+-------------+-----------+------------+----------------+-----------+-----------+------------------------------------+----------------------------------------------+------------------------------+---------+-------+
+| ABW  | Aruba                                 | North America | Caribbean                 |      193.00 |      NULL |     103000 |           78.4 |    828.00 |    793.00 | Aruba                              | Nonmetropolitan Territory of The Netherlands | Beatrix                      |     129 | AW    |
+| AFG  | Afghanistan                           | Asia          | Southern and Central Asia |   652090.00 |      1919 |   22720000 |           45.9 |   5976.00 |      NULL | Afganistan/Afqanestan              | Islamic Emirate                              | Mohammad Omar                |       1 | AF    |
+| AGO  | Angola                                | Africa        | Central Africa            |  1246700.00 |      1975 |   12878000 |           38.3 |   6648.00 |   7984.00 | Angola                             | Republic                                     | Jos� Eduardo dos Santos      |      56 | AO    |
+| AIA  | Anguilla                              | North America | Caribbean                 |       96.00 |      NULL |       8000 |           76.1 |     63.20 |      NULL | Anguilla                           | Dependent Territory of the UK                | Elisabeth II                 |      62 | AI    |
+| ALB  | Albania                               | Europe        | Southern Europe           |    28748.00 |      1912 |    3401200 |           71.6 |   3205.00 |   2500.00 | Shqip�ria                          | Republic                                     | Rexhep Mejdani               |      34 | AL    |
+| AND  | Andorra                               | Europe        | Southern Europe           |      468.00 |      1278 |      78000 |           83.5 |   1630.00 |      NULL | Andorra                            | Parliamentary Coprincipality                 |                              |      55 | AD    |
+| ANT  | Netherlands Antilles                  | North America | Caribbean                 |      800.00 |      NULL |     217000 |           74.7 |   1941.00 |      NULL | Nederlandse Antillen               | Nonmetropolitan Territory of The Netherlands | Beatrix                      |      33 | AN    |
+| ARE  | United Arab Emirates                  | Asia          | Middle East               |    83600.00 |      1971 |    2441000 |           74.1 |  37966.00 |  36846.00 | Al-Imarat al-�Arabiya al-Muttahida | Emirate Federation                           | Zayid bin Sultan al-Nahayan  |      65 | AE    |
+| ARG  | Argentina                             | South America | South America             |  2780400.00 |      1816 |   37032000 |           75.1 | 340238.00 | 323310.00 | Argentina                          | Federal Republic                             | Fernando de la R�a           |      69 | AR    |
+| ARM  | Armenia                               | Asia          | Middle East               |    29800.00 |      1991 |    3520000 |           66.4 |   1813.00 |   1627.00 | Hajastan                           | Republic                                     | Robert Kot?arjan             |     126 | AM    |
+| ASM  | American Samoa                        | Oceania       | Polynesia                 |      199.00 |      NULL |      68000 |           75.1 |    334.00 |      NULL | Amerika Samoa                      | US Territory                                 | George W. Bush               |      54 | AS    |
+| ATA  | Antarctica                            | Antarctica    | Antarctica                | 13120000.00 |      NULL |          0 |           NULL |      0.00 |      NULL | ?                                  | Co-administrated                             |                              |    NULL | AQ    |
+| ATF  | French Southern territories           | Antarctica    | Antarctica                |     7780.00 |      NULL |          0 |           NULL |      0.00 |      NULL | Terres australes fran�aises        | Nonmetropolitan Territory of France          | Jacques Chirac               |    NULL | TF    |
+| ATG  | Antigua and Barbuda                   | North America | Caribbean                 |      442.00 |      1981 |      68000 |           70.5 |    612.00 |    584.00 | Antigua and Barbuda                | Constitutional Monarchy                      | Elisabeth II                 |      63 | AG    |
+| AUS  | Australia                             | Oceania       | Australia and New Zealand |  7741220.00 |      1901 |   18886000 |           79.8 | 351182.00 | 392911.00 | Australia                          | Constitutional Monarchy, Federation          | Elisabeth II                 |     135 | AU    |
+| AUT  | Austria                               | Europe        | Western Europe            |    83859.00 |      1918 |    8091800 |           77.7 | 211860.00 | 206025.00 | �sterreich                         | Federal Republic                             | Thomas Klestil               |    1523 | AT    |
+| AZE  | Azerbaijan                            | Asia          | Middle East               |    86600.00 |      1991 |    7734000 |           62.9 |   4127.00 |   4100.00 | Az�rbaycan                         | Federal Republic                             | Heyd�r �liyev                |     144 | AZ    |
+| BDI  | Burundi                               | Africa        | Eastern Africa            |    27834.00 |      1962 |    6695000 |           46.2 |    903.00 |    982.00 | Burundi/Uburundi                   | Republic                                     | Pierre Buyoya                |     552 | BI    |
+| BEL  | Belgium                               | Europe        | Western Europe            |    30518.00 |      1830 |   10239000 |           77.8 | 249704.00 | 243948.00 | Belgi�/Belgique                    | Constitutional Monarchy, Federation          | Albert II                    |     179 | BE    |
+| BEN  | Benin                                 | Africa        | Western Africa            |   112622.00 |      1960 |    6097000 |           50.2 |   2357.00 |   2141.00 | B�nin                              | Republic                                     | Mathieu K�r�kou              |     187 | BJ    |
+| BFA  | Burkina Faso                          | Africa        | Western Africa            |   274000.00 |      1960 |   11937000 |           46.7 |   2425.00 |   2201.00 | Burkina Faso                       | Republic                                     | Blaise Compaor�              |     549 | BF    |
+| BGD  | Bangladesh                            | Asia          | Southern and Central Asia |   143998.00 |      1971 |  129155000 |           60.2 |  32852.00 |  31966.00 | Bangladesh                         | Republic                                     | Shahabuddin Ahmad            |     150 | BD    |
+| BGR  | Bulgaria                              | Europe        | Eastern Europe            |   110994.00 |      1908 |    8190900 |           70.9 |  12178.00 |  10169.00 | Balgarija                          | Republic                                     | Petar Stojanov               |     539 | BG    |
+| BHR  | Bahrain                               | Asia          | Middle East               |      694.00 |      1971 |     617000 |           73.0 |   6366.00 |   6097.00 | Al-Bahrayn                         | Monarchy (Emirate)                           | Hamad ibn Isa al-Khalifa     |     149 | BH    |
+| BHS  | Bahamas                               | North America | Caribbean                 |    13878.00 |      1973 |     307000 |           71.1 |   3527.00 |   3347.00 | The Bahamas                        | Constitutional Monarchy                      | Elisabeth II                 |     148 | BS    |
+| BIH  | Bosnia and Herzegovina                | Europe        | Southern Europe           |    51197.00 |      1992 |    3972000 |           71.5 |   2841.00 |      NULL | Bosna i Hercegovina                | Federal Republic                             | Ante Jelavic                 |     201 | BA    |
+| BLR  | Belarus                               | Europe        | Eastern Europe            |   207600.00 |      1991 |   10236000 |           68.0 |  13714.00 |      NULL | Belarus                            | Republic                                     | Aljaksandr Luka?enka         |    3520 | BY    |
+| BLZ  | Belize                                | North America | Central America           |    22696.00 |      1981 |     241000 |           70.9 |    630.00 |    616.00 | Belize                             | Constitutional Monarchy                      | Elisabeth II                 |     185 | BZ    |
+| BMU  | Bermuda                               | North America | North America             |       53.00 |      NULL |      65000 |           76.9 |   2328.00 |   2190.00 | Bermuda                            | Dependent Territory of the UK                | Elisabeth II                 |     191 | BM    |
+| BOL  | Bolivia                               | South America | South America             |  1098581.00 |      1825 |    8329000 |           63.7 |   8571.00 |   7967.00 | Bolivia                            | Republic                                     | Hugo B�nzer Su�rez           |     194 | BO    |
+| BRA  | Brazil                                | South America | South America             |  8547403.00 |      1822 |  170115000 |           62.9 | 776739.00 | 804108.00 | Brasil                             | Federal Republic                             | Fernando Henrique Cardoso    |     211 | BR    |
+| BRB  | Barbados                              | North America | Caribbean                 |      430.00 |      1966 |     270000 |           73.0 |   2223.00 |   2186.00 | Barbados                           | Constitutional Monarchy                      | Elisabeth II                 |     174 | BB    |
+| BRN  | Brunei                                | Asia          | Southeast Asia            |     5765.00 |      1984 |     328000 |           73.6 |  11705.00 |  12460.00 | Brunei Darussalam                  | Monarchy (Sultanate)                         | Haji Hassan al-Bolkiah       |     538 | BN    |
+| BTN  | Bhutan                                | Asia          | Southern and Central Asia |    47000.00 |      1910 |    2124000 |           52.4 |    372.00 |    383.00 | Druk-Yul                           | Monarchy                                     | Jigme Singye Wangchuk        |     192 | BT    |
+| BVT  | Bouvet Island                         | Antarctica    | Antarctica                |       59.00 |      NULL |          0 |           NULL |      0.00 |      NULL | Bouvet�ya                          | Dependent Territory of Norway                | Harald V                     |    NULL | BV    |
+| BWA  | Botswana                              | Africa        | Southern Africa           |   581730.00 |      1966 |    1622000 |           39.3 |   4834.00 |   4935.00 | Botswana                           | Republic                                     | Festus G. Mogae              |     204 | BW    |
+| CAF  | Central African Republic              | Africa        | Central Africa            |   622984.00 |      1960 |    3615000 |           44.0 |   1054.00 |    993.00 | Centrafrique/B�-Afr�ka             | Republic                                     | Ange-F�lix Patass�           |    1889 | CF    |
+| CAN  | Canada                                | North America | North America             |  9970610.00 |      1867 |   31147000 |           79.4 | 598862.00 | 625626.00 | Canada                             | Constitutional Monarchy, Federation          | Elisabeth II                 |    1822 | CA    |
+| CCK  | Cocos (Keeling) Islands               | Oceania       | Australia and New Zealand |       14.00 |      NULL |        600 |           NULL |      0.00 |      NULL | Cocos (Keeling) Islands            | Territory of Australia                       | Elisabeth II                 |    2317 | CC    |
+| CHE  | Switzerland                           | Europe        | Western Europe            |    41284.00 |      1499 |    7160400 |           79.6 | 264478.00 | 256092.00 | Schweiz/Suisse/Svizzera/Svizra     | Federation                                   | Adolf Ogi                    |    3248 | CH    |
+| CHL  | Chile                                 | South America | South America             |   756626.00 |      1810 |   15211000 |           75.7 |  72949.00 |  75780.00 | Chile                              | Republic                                     | Ricardo Lagos Escobar        |     554 | CL    |
+| CHN  | China                                 | Asia          | Eastern Asia              |  9572900.00 |     -1523 | 1277558000 |           71.4 | 982268.00 | 917719.00 | Zhongquo                           | People'sRepublic                             | Jiang Zemin                  |    1891 | CN    |
+| CIV  | C�te d?Ivoire                         | Africa        | Western Africa            |   322463.00 |      1960 |   14786000 |           45.2 |  11345.00 |  10285.00 | C�te d?Ivoire                      | Republic                                     | Laurent Gbagbo               |    2814 | CI    |
+| CMR  | Cameroon                              | Africa        | Central Africa            |   475442.00 |      1960 |   15085000 |           54.8 |   9174.00 |   8596.00 | Cameroun/Cameroon                  | Republic                                     | Paul Biya                    |    1804 | CM    |
+| COD  | Congo, The Democratic Republic of the | Africa        | Central Africa            |  2344858.00 |      1960 |   51654000 |           48.8 |   6964.00 |   2474.00 | R�publique D�mocratique du Congo   | Republic                                     | Joseph Kabila                |    2298 | CD    |
+| COG  | Congo                                 | Africa        | Central Africa            |   342000.00 |      1960 |    2943000 |           47.4 |   2108.00 |   2287.00 | Congo                              | Republic                                     | Denis Sassou-Nguesso         |    2296 | CG    |
+| COK  | Cook Islands                          | Oceania       | Polynesia                 |      236.00 |      NULL |      20000 |           71.1 |    100.00 |      NULL | The Cook Islands                   | Nonmetropolitan Territory of New Zealand     | Elisabeth II                 |     583 | CK    |
+| COL  | Colombia                              | South America | South America             |  1138914.00 |      1810 |   42321000 |           70.3 | 102896.00 | 105116.00 | Colombia                           | Republic                                     | Andr�s Pastrana Arango       |    2257 | CO    |
+| COM  | Comoros                               | Africa        | Eastern Africa            |     1862.00 |      1975 |     578000 |           60.0 |   4401.00 |   4361.00 | Komori/Comores                     | Republic                                     | Azali Assoumani              |    2295 | KM    |
+| CPV  | Cape Verde                            | Africa        | Western Africa            |     4033.00 |      1975 |     428000 |           68.9 |    435.00 |    420.00 | Cabo Verde                         | Republic                                     | Ant�nio Mascarenhas Monteiro |    1859 | CV    |
++------+---------------------------------------+---------------+---------------------------+-------------+-----------+------------+----------------+-----------+-----------+------------------------------------+----------------------------------------------+------------------------------+---------+-------+
+50 rows in set (0.00 sec)
+
+mysql> SELECT * FROM country LIMIT 10;
++------+----------------------+---------------+---------------------------+-------------+-----------+------------+----------------+-----------+-----------+------------------------------------+----------------------------------------------+-----------------------------+---------+-------+
+| Code | Name                 | Continent     | Region                    | SurfaceArea | IndepYear | Population | LifeExpectancy | GNP       | GNPOld    | LocalName                          | GovernmentForm                               | HeadOfState                 | Capital | Code2 |
++------+----------------------+---------------+---------------------------+-------------+-----------+------------+----------------+-----------+-----------+------------------------------------+----------------------------------------------+-----------------------------+---------+-------+
+| ABW  | Aruba                | North America | Caribbean                 |      193.00 |      NULL |     103000 |           78.4 |    828.00 |    793.00 | Aruba                              | Nonmetropolitan Territory of The Netherlands | Beatrix                     |     129 | AW    |
+| AFG  | Afghanistan          | Asia          | Southern and Central Asia |   652090.00 |      1919 |   22720000 |           45.9 |   5976.00 |      NULL | Afganistan/Afqanestan              | Islamic Emirate                              | Mohammad Omar               |       1 | AF    |
+| AGO  | Angola               | Africa        | Central Africa            |  1246700.00 |      1975 |   12878000 |           38.3 |   6648.00 |   7984.00 | Angola                             | Republic                                     | Jos� Eduardo dos Santos     |      56 | AO    |
+| AIA  | Anguilla             | North America | Caribbean                 |       96.00 |      NULL |       8000 |           76.1 |     63.20 |      NULL | Anguilla                           | Dependent Territory of the UK                | Elisabeth II                |      62 | AI    |
+| ALB  | Albania              | Europe        | Southern Europe           |    28748.00 |      1912 |    3401200 |           71.6 |   3205.00 |   2500.00 | Shqip�ria                          | Republic                                     | Rexhep Mejdani              |      34 | AL    |
+| AND  | Andorra              | Europe        | Southern Europe           |      468.00 |      1278 |      78000 |           83.5 |   1630.00 |      NULL | Andorra                            | Parliamentary Coprincipality                 |                             |      55 | AD    |
+| ANT  | Netherlands Antilles | North America | Caribbean                 |      800.00 |      NULL |     217000 |           74.7 |   1941.00 |      NULL | Nederlandse Antillen               | Nonmetropolitan Territory of The Netherlands | Beatrix                     |      33 | AN    |
+| ARE  | United Arab Emirates | Asia          | Middle East               |    83600.00 |      1971 |    2441000 |           74.1 |  37966.00 |  36846.00 | Al-Imarat al-�Arabiya al-Muttahida | Emirate Federation                           | Zayid bin Sultan al-Nahayan |      65 | AE    |
+| ARG  | Argentina            | South America | South America             |  2780400.00 |      1816 |   37032000 |           75.1 | 340238.00 | 323310.00 | Argentina                          | Federal Republic                             | Fernando de la R�a          |      69 | AR    |
+| ARM  | Armenia              | Asia          | Middle East               |    29800.00 |      1991 |    3520000 |           66.4 |   1813.00 |   1627.00 | Hajastan                           | Republic                                     | Robert Kot?arjan            |     126 | AM    |
++------+----------------------+---------------+---------------------------+-------------+-----------+------------+----------------+-----------+-----------+------------------------------------+----------------------------------------------+-----------------------------+---------+-------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT * FROM country LIMIT 10\G;
+*************************** 1. row ***************************
+          Code: ABW
+          Name: Aruba
+     Continent: North America
+        Region: Caribbean
+   SurfaceArea: 193.00
+     IndepYear: NULL
+    Population: 103000
+LifeExpectancy: 78.4
+           GNP: 828.00
+        GNPOld: 793.00
+     LocalName: Aruba
+GovernmentForm: Nonmetropolitan Territory of The Netherlands
+   HeadOfState: Beatrix
+       Capital: 129
+         Code2: AW
+*************************** 2. row ***************************
+          Code: AFG
+          Name: Afghanistan
+     Continent: Asia
+        Region: Southern and Central Asia
+   SurfaceArea: 652090.00
+     IndepYear: 1919
+    Population: 22720000
+LifeExpectancy: 45.9
+           GNP: 5976.00
+        GNPOld: NULL
+     LocalName: Afganistan/Afqanestan
+GovernmentForm: Islamic Emirate
+   HeadOfState: Mohammad Omar
+       Capital: 1
+         Code2: AF
+*************************** 3. row ***************************
+          Code: AGO
+          Name: Angola
+     Continent: Africa
+        Region: Central Africa
+   SurfaceArea: 1246700.00
+     IndepYear: 1975
+    Population: 12878000
+LifeExpectancy: 38.3
+           GNP: 6648.00
+        GNPOld: 7984.00
+     LocalName: Angola
+GovernmentForm: Republic
+   HeadOfState: Jos� Eduardo dos Santos
+       Capital: 56
+         Code2: AO
+*************************** 4. row ***************************
+          Code: AIA
+          Name: Anguilla
+     Continent: North America
+        Region: Caribbean
+   SurfaceArea: 96.00
+     IndepYear: NULL
+    Population: 8000
+LifeExpectancy: 76.1
+           GNP: 63.20
+        GNPOld: NULL
+     LocalName: Anguilla
+GovernmentForm: Dependent Territory of the UK
+   HeadOfState: Elisabeth II
+       Capital: 62
+         Code2: AI
+*************************** 5. row ***************************
+          Code: ALB
+          Name: Albania
+     Continent: Europe
+        Region: Southern Europe
+   SurfaceArea: 28748.00
+     IndepYear: 1912
+    Population: 3401200
+LifeExpectancy: 71.6
+           GNP: 3205.00
+        GNPOld: 2500.00
+     LocalName: Shqip�ria
+GovernmentForm: Republic
+   HeadOfState: Rexhep Mejdani
+       Capital: 34
+         Code2: AL
+*************************** 6. row ***************************
+          Code: AND
+          Name: Andorra
+     Continent: Europe
+        Region: Southern Europe
+   SurfaceArea: 468.00
+     IndepYear: 1278
+    Population: 78000
+LifeExpectancy: 83.5
+           GNP: 1630.00
+        GNPOld: NULL
+     LocalName: Andorra
+GovernmentForm: Parliamentary Coprincipality
+   HeadOfState: 
+       Capital: 55
+         Code2: AD
+*************************** 7. row ***************************
+          Code: ANT
+          Name: Netherlands Antilles
+     Continent: North America
+        Region: Caribbean
+   SurfaceArea: 800.00
+     IndepYear: NULL
+    Population: 217000
+LifeExpectancy: 74.7
+           GNP: 1941.00
+        GNPOld: NULL
+     LocalName: Nederlandse Antillen
+GovernmentForm: Nonmetropolitan Territory of The Netherlands
+   HeadOfState: Beatrix
+       Capital: 33
+         Code2: AN
+*************************** 8. row ***************************
+          Code: ARE
+          Name: United Arab Emirates
+     Continent: Asia
+        Region: Middle East
+   SurfaceArea: 83600.00
+     IndepYear: 1971
+    Population: 2441000
+LifeExpectancy: 74.1
+           GNP: 37966.00
+        GNPOld: 36846.00
+     LocalName: Al-Imarat al-�Arabiya al-Muttahida
+GovernmentForm: Emirate Federation
+   HeadOfState: Zayid bin Sultan al-Nahayan
+       Capital: 65
+         Code2: AE
+*************************** 9. row ***************************
+          Code: ARG
+          Name: Argentina
+     Continent: South America
+        Region: South America
+   SurfaceArea: 2780400.00
+     IndepYear: 1816
+    Population: 37032000
+LifeExpectancy: 75.1
+           GNP: 340238.00
+        GNPOld: 323310.00
+     LocalName: Argentina
+GovernmentForm: Federal Republic
+   HeadOfState: Fernando de la R�a
+       Capital: 69
+         Code2: AR
+*************************** 10. row ***************************
+          Code: ARM
+          Name: Armenia
+     Continent: Asia
+        Region: Middle East
+   SurfaceArea: 29800.00
+     IndepYear: 1991
+    Population: 3520000
+LifeExpectancy: 66.4
+           GNP: 1813.00
+        GNPOld: 1627.00
+     LocalName: Hajastan
+GovernmentForm: Republic
+   HeadOfState: Robert Kot?arjan
+       Capital: 126
+         Code2: AM
+10 rows in set (0.00 sec)
+
+ERROR: 
+No query specified
+
+mysql> select * FROM country LIMIT 3\G;
+*************************** 1. row ***************************
+          Code: ABW
+          Name: Aruba
+     Continent: North America
+        Region: Caribbean
+   SurfaceArea: 193.00
+     IndepYear: NULL
+    Population: 103000
+LifeExpectancy: 78.4
+           GNP: 828.00
+        GNPOld: 793.00
+     LocalName: Aruba
+GovernmentForm: Nonmetropolitan Territory of The Netherlands
+   HeadOfState: Beatrix
+       Capital: 129
+         Code2: AW
+*************************** 2. row ***************************
+          Code: AFG
+          Name: Afghanistan
+     Continent: Asia
+        Region: Southern and Central Asia
+   SurfaceArea: 652090.00
+     IndepYear: 1919
+    Population: 22720000
+LifeExpectancy: 45.9
+           GNP: 5976.00
+        GNPOld: NULL
+     LocalName: Afganistan/Afqanestan
+GovernmentForm: Islamic Emirate
+   HeadOfState: Mohammad Omar
+       Capital: 1
+         Code2: AF
+*************************** 3. row ***************************
+          Code: AGO
+          Name: Angola
+     Continent: Africa
+        Region: Central Africa
+   SurfaceArea: 1246700.00
+     IndepYear: 1975
+    Population: 12878000
+LifeExpectancy: 38.3
+           GNP: 6648.00
+        GNPOld: 7984.00
+     LocalName: Angola
+GovernmentForm: Republic
+   HeadOfState: Jos� Eduardo dos Santos
+       Capital: 56
+         Code2: AO
+3 rows in set (0.00 sec)
+
+ERROR: 
+No query specified
+
+mysql> SELECT code FROM country LIMIT 10;
++------+
+| code |
++------+
+| ABW  |
+| AFG  |
+| AGO  |
+| AIA  |
+| ALB  |
+| AND  |
+| ANT  |
+| ARE  |
+| ARG  |
+| ARM  |
++------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT code, name, continent, population FROM country LIMIT 10;
++------+----------------------+---------------+------------+
+| code | name                 | continent     | population |
++------+----------------------+---------------+------------+
+| ABW  | Aruba                | North America |     103000 |
+| AFG  | Afghanistan          | Asia          |   22720000 |
+| AGO  | Angola               | Africa        |   12878000 |
+| AIA  | Anguilla             | North America |       8000 |
+| ALB  | Albania              | Europe        |    3401200 |
+| AND  | Andorra              | Europe        |      78000 |
+| ANT  | Netherlands Antilles | North America |     217000 |
+| ARE  | United Arab Emirates | Asia          |    2441000 |
+| ARG  | Argentina            | South America |   37032000 |
+| ARM  | Armenia              | Asia          |    3520000 |
++------+----------------------+---------------+------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT code, name, continent, population FROM country GROUP BY continent;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'world.country.Code' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> SELECT Name, Continent, Population FROM country GROUP BY continent;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'world.country.Name' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> SELECT COUNT(*), Continent FROM country GROUP BY continent;
++----------+---------------+
+| COUNT(*) | Continent     |
++----------+---------------+
+|       37 | North America |
+|       51 | Asia          |
+|       58 | Africa        |
+|       46 | Europe        |
+|       14 | South America |
+|       28 | Oceania       |
+|        5 | Antarctica    |
++----------+---------------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(Name), Continent FROM country GROUP BY continent;
++-------------+---------------+
+| COUNT(Name) | Continent     |
++-------------+---------------+
+|          37 | North America |
+|          51 | Asia          |
+|          58 | Africa        |
+|          46 | Europe        |
+|          14 | South America |
+|          28 | Oceania       |
+|           5 | Antarctica    |
++-------------+---------------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(Name) FROM country;
++-------------+
+| COUNT(Name) |
++-------------+
+|         239 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(*), Continent FROM country GROUP BY continent;
++----------+---------------+
+| COUNT(*) | Continent     |
++----------+---------------+
+|       37 | North America |
+|       51 | Asia          |
+|       58 | Africa        |
+|       46 | Europe        |
+|       14 | South America |
+|       28 | Oceania       |
+|        5 | Antarctica    |
++----------+---------------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT Name, Population FROM country LIMIT 10;
++----------------------+------------+
+| Name                 | Population |
++----------------------+------------+
+| Aruba                |     103000 |
+| Afghanistan          |   22720000 |
+| Angola               |   12878000 |
+| Anguilla             |       8000 |
+| Albania              |    3401200 |
+| Andorra              |      78000 |
+| Netherlands Antilles |     217000 |
+| United Arab Emirates |    2441000 |
+| Argentina            |   37032000 |
+| Armenia              |    3520000 |
++----------------------+------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT Name, Population FROM country LIMIT 10 ORDER BY Name;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY Name' at line 1
+mysql> SELECT Name, Population FROM country ORDER BY Name LIMIT 10;
++---------------------+------------+
+| Name                | Population |
++---------------------+------------+
+| Afghanistan         |   22720000 |
+| Albania             |    3401200 |
+| Algeria             |   31471000 |
+| American Samoa      |      68000 |
+| Andorra             |      78000 |
+| Angola              |   12878000 |
+| Anguilla            |       8000 |
+| Antarctica          |          0 |
+| Antigua and Barbuda |      68000 |
+| Argentina           |   37032000 |
++---------------------+------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT AVG(Population) FROM country;
++-----------------+
+| AVG(Population) |
++-----------------+
+|   25434098.1172 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT AVG(LifeExpectancy) FROM country;
++---------------------+
+| AVG(LifeExpectancy) |
++---------------------+
+|            66.48604 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT SUM(Population) FROM country;
++-----------------+
+| SUM(Population) |
++-----------------+
+|      6078749450 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> USE listacc;
+Database changed
+mysql> SHOW TABLES;
++-------------------+
+| Tables_in_listacc |
++-------------------+
+| users             |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM users;
++----+----------+------+---------+
+| id | name     | age  | state   |
++----+----------+------+---------+
+|  1 | Sir Vin  |   50 | Enugu   |
+|  2 | Chukwuka |   40 | Ebonyi  |
+|  3 | Chekwube |   30 | Enugu   |
+|  4 | Bani     |   45 | Ebonyi  |
+|  5 | Mimi     |   20 | Ebonyi  |
+|  6 | NULL     |   39 | Anambra |
+|  7 | NULL     |   25 | Anambra |
+|  8 | Foo      |   19 | Anambra |
+|  9 |          |   22 | Ebonyi  |
++----+----------+------+---------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT MAX(age) FROM users;
++----------+
+| MAX(age) |
++----------+
+|       50 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT MIN(age) FROM users;
++----------+
+| MIN(age) |
++----------+
+|       19 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> ^C
+mysql> ^C
+mysql> SELECT COUNT(name) AS num_of_students FROM users;
++-----------------+
+| num_of_students |
++-----------------+
+|               7 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(name) FROM users;
++-------------+
+| COUNT(name) |
++-------------+
+|           7 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT name FROM users;
++----------+
+| name     |
++----------+
+| Sir Vin  |
+| Chukwuka |
+| Chekwube |
+| Bani     |
+| Mimi     |
+| NULL     |
+| NULL     |
+| Foo      |
+|          |
++----------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT name AS first_name FROM users;
++------------+
+| first_name |
++------------+
+| Sir Vin    |
+| Chukwuka   |
+| Chekwube   |
+| Bani       |
+| Mimi       |
+| NULL       |
+| NULL       |
+| Foo        |
+|            |
++------------+
+9 rows in set (0.00 sec)
+
+mysql> ^C
+mysql> SELECT T.name, T.age FROM users AS T;
++----------+------+
+| name     | age  |
++----------+------+
+| Sir Vin  |   50 |
+| Chukwuka |   40 |
+| Chekwube |   30 |
+| Bani     |   45 |
+| Mimi     |   20 |
+| NULL     |   39 |
+| NULL     |   25 |
+| Foo      |   19 |
+|          |   22 |
++----------+------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT Teacher.name, Teacher.age FROM users AS Teacher;
++----------+------+
+| name     | age  |
++----------+------+
+| Sir Vin  |   50 |
+| Chukwuka |   40 |
+| Chekwube |   30 |
+| Bani     |   45 |
+| Mimi     |   20 |
+| NULL     |   39 |
+| NULL     |   25 |
+| Foo      |   19 |
+|          |   22 |
++----------+------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT * FROM users WHERE name LIKE 'C';
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM users WHERE name LIKE 'Mimi';
++----+------+------+--------+
+| id | name | age  | state  |
++----+------+------+--------+
+|  5 | Mimi |   20 | Ebonyi |
++----+------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM users WHERE name LIKE '%C%';
++----+----------+------+--------+
+| id | name     | age  | state  |
++----+----------+------+--------+
+|  2 | Chukwuka |   40 | Ebonyi |
+|  3 | Chekwube |   30 | Enugu  |
++----+----------+------+--------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM users WHERE name LIKE '%i%';
++----+---------+------+--------+
+| id | name    | age  | state  |
++----+---------+------+--------+
+|  1 | Sir Vin |   50 | Enugu  |
+|  4 | Bani    |   45 | Ebonyi |
+|  5 | Mimi    |   20 | Ebonyi |
++----+---------+------+--------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM users WHERE name LIKE '%C';
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM users WHERE name LIKE 'C%';
++----+----------+------+--------+
+| id | name     | age  | state  |
++----+----------+------+--------+
+|  2 | Chukwuka |   40 | Ebonyi |
+|  3 | Chekwube |   30 | Enugu  |
++----+----------+------+--------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM users WHERE name LIKE '%i';
++----+------+------+--------+
+| id | name | age  | state  |
++----+------+------+--------+
+|  4 | Bani |   45 | Ebonyi |
+|  5 | Mimi |   20 | Ebonyi |
++----+------+------+--------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM users WHERE name LIKE 'B%';
++----+------+------+--------+
+| id | name | age  | state  |
++----+------+------+--------+
+|  4 | Bani |   45 | Ebonyi |
++----+------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> ^C
+mysql> SELECT * FROM users WHERE name LIKE '%i%';
++----+---------+------+--------+
+| id | name    | age  | state  |
++----+---------+------+--------+
+|  1 | Sir Vin |   50 | Enugu  |
+|  4 | Bani    |   45 | Ebonyi |
+|  5 | Mimi    |   20 | Ebonyi |
++----+---------+------+--------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM users WHERE name LIKE '%i%' HAVING age > 40;
++----+---------+------+--------+
+| id | name    | age  | state  |
++----+---------+------+--------+
+|  1 | Sir Vin |   50 | Enugu  |
+|  4 | Bani    |   45 | Ebonyi |
++----+---------+------+--------+
+2 rows in set (0.00 sec)
+
+mysql> CREATE TABLE users(
+    -> id INT PRIMARY KEY NOT NULL,
+    -> name TEXT, 
+    -> age INT,            
+    -> CHECK(age > 25));   
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> SELECT * FROM users;
+Empty set (0.00 sec)
+
+mysql> INSERT INTO users (id, age) VALUES (1, 40), (2, 50);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM users;
++----+------+------+
+| id | name | age  |
++----+------+------+
+|  1 | NULL |   40 |
+|  2 | NULL |   50 |
++----+------+------+
+2 rows in set (0.00 sec)
+
+mysql> USE listacc;^C      
+mysql> INSERT INTO users (id, name, age) VALUES (1, 'Foo', 10);          
+ERROR 3819 (HY000): Check constraint 'users_chk_1' is violated.
+
+mysql> ^C
+mysql> notee;
